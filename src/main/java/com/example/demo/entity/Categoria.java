@@ -15,7 +15,7 @@ import jakarta.persistence.OneToMany;
 public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private long id;
 
 	private String nombre;
 	
@@ -55,6 +55,11 @@ public class Categoria {
 
 	public void setProductos(Set<Producto> productos) {
 		this.productos = productos;
+	}
+
+	@Override
+	public String toString() {
+		return "Categoria [id=" + id + ", nombre=" + nombre + ", productos=" + productos + "]";
 	}
 
 	
