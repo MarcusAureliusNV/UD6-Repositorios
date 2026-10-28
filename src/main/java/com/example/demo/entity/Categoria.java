@@ -1,43 +1,48 @@
 package com.example.demo.entity;
 
-import java.util.List;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name="categorias")
 public class Categoria {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+
 	private String nombre;
 	
-	@OneToMany
-	@JoinColumn(name="producto_id")	
-	private List<Producto> productos;
-	
-	public Categoria(String nombre, List<Producto> productos) {
-		super();
-		this.nombre = nombre;
-		this.productos = productos;
-	}
+	@OneToMany(mappedBy = "categoria")
+	@JoinColumn(name = "producto_id")
+	private Set<Producto> productos = new HashSet<>();
+
 
 	public Categoria() {
 		super();
 	}
 
-	public long getId() {
+
+	public Categoria(String nombre, Set<Producto> productos) {
+		super();
+		this.nombre = nombre;
+		this.productos = productos;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
+
 		this.id = id;
 	}
 
@@ -48,21 +53,23 @@ public class Categoria {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	public List<Producto> getProductos() {
+
+
+	public Set<Producto> getProductos() {
 		return productos;
 	}
 
-	public void setProductos(List<Producto> productos) {
+	public void setProductos(Set<Producto> productos) {
+
 		this.productos = productos;
 	}
 
 	@Override
 	public String toString() {
-		return "Categoria [id=" + id + ", nombre=" + nombre + "]";
+
+		return "Categoria [id=" + id + ", nombre=" + nombre + ", productos=" + productos + "]";
 	}
-	
-	
+
 	
 	
 

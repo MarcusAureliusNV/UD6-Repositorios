@@ -1,12 +1,10 @@
 package com.example.demo.entity;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 
 @Entity
 @Table(name="productos")
@@ -23,12 +21,15 @@ public class Producto {
 	@JoinColumn(name="categoria_id")
 	private Categoria categoria;
 
+	@ManyToOne
+	@JoinColumn(name = "categoria_id")
+	private Categoria categoria;
+	
 	public Producto() {
 		super();
 	}
 
-	
-	
++
 	public Producto(String nombre, Double precio, int stock, Categoria categoria) {
 		super();
 		this.nombre = nombre;
@@ -71,6 +72,14 @@ public class Producto {
 		this.stock = stock;
 	}
 	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
 	public Categoria getCategoria() {
 		return categoria;
 	}
