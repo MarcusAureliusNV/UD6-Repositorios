@@ -20,15 +20,15 @@ public class Categoria {
 	private String nombre;
 	
 	@OneToMany(mappedBy = "categoria")
+	@JoinColumn(name = "producto_id")
 	private Set<Producto> productos = new HashSet<>();
 
 	public Categoria() {
 		super();
 	}
 
-	public Categoria(Long id, String nombre, Set<Producto> productos) {
+	public Categoria(String nombre, Set<Producto> productos) {
 		super();
-		this.id = id;
 		this.nombre = nombre;
 		this.productos = productos;
 	}

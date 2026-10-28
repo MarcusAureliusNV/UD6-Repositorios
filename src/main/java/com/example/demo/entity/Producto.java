@@ -24,9 +24,8 @@ public class Producto {
 		super();
 	}
 
-	public Producto(long id, String nombre, Double precio, int stock, Categoria categoria) {
+	public Producto(String nombre, Double precio, int stock, Categoria categoria) {
 		super();
-		this.id = id;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.stock = stock;

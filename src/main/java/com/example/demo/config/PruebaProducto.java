@@ -17,8 +17,8 @@ public class PruebaProducto {
 	CommandLineRunner crearProducto() {
 		return args->{
 			Set<Producto> productos = new HashSet<>();
-			Categoria c = new Categoria(1L, "Culinarios", productos);
-			Producto p = new Producto(1L, "Mondongo", 67.67, 67, c);
+			Categoria c = new Categoria("Culinarios", productos);
+			Producto p = new Producto("Mondongo", 67.67, 67, c);
 			productos.add(p);
 			System.out.println(p);
 			System.out.println(c);
