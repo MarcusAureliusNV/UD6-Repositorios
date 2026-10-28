@@ -19,7 +19,7 @@ public class Categoria {
 
 	private String nombre;
 	
-	@OneToMany(mappedBy = "categoria")
+	@OneToMany
 	@JoinColumn(name = "producto_id")
 	private Set<Producto> productos = new HashSet<>();
 
