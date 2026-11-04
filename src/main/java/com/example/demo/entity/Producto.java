@@ -7,7 +7,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-@Table(name="productos")
 public class Producto {
 
 	@Id
@@ -18,10 +17,6 @@ public class Producto {
 	private int stock;
 	
 	@ManyToOne
-	@JoinColumn(name="categoria_id")
-	private Categoria categoria;
-
-	@ManyToOne
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 	
@@ -29,7 +24,6 @@ public class Producto {
 		super();
 	}
 
-+
 	public Producto(String nombre, Double precio, int stock, Categoria categoria) {
 		super();
 		this.nombre = nombre;
@@ -70,22 +64,6 @@ public class Producto {
 
 	public void setStock(int stock) {
 		this.stock = stock;
-	}
-	
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
 	}
 
 	@Override
