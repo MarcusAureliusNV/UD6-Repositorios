@@ -15,7 +15,7 @@ public class Producto {
 	private String nombre;
 	private Double precio;
 	private int stock;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
@@ -31,6 +31,8 @@ public class Producto {
 		this.stock = stock;
 		this.categoria = categoria;
 	}
+
+
 
 	public long getId() {
 		return id;
@@ -62,14 +64,6 @@ public class Producto {
 
 	public void setStock(int stock) {
 		this.stock = stock;
-	}
-
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
 	}
 
 	@Override

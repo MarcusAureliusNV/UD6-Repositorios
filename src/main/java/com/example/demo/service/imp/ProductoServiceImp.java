@@ -1,8 +1,9 @@
 package com.example.demo.service.imp;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Producto;
@@ -10,10 +11,11 @@ import com.example.demo.repository.ProductoRepository;
 import com.example.demo.service.ProductoService;
 
 @Service
-public class ProductoServiceImp implements ProductoService {
+public class ProductoServiceImp implements ProductoService{
 
 	private ProductoRepository productoRepository;
-
+	
+	
 	public ProductoServiceImp(ProductoRepository productoRepository) {
 		this.productoRepository = productoRepository;
 	}
@@ -21,7 +23,7 @@ public class ProductoServiceImp implements ProductoService {
 	@Override
 	public Producto crearProducto(Producto p) {
 		return productoRepository.save(p);
-
+		
 	}
 
 	@Override
@@ -37,13 +39,13 @@ public class ProductoServiceImp implements ProductoService {
 	@Override
 	public Producto modificarProducto(Producto p) {
 		return productoRepository.save(p);
-
+		
 	}
 
 	@Override
 	public void eliminarProducto(Producto p) { 
 		productoRepository.deleteById(p.getId());
-
+		
 	}
 
 	@Override
@@ -52,30 +54,36 @@ public class ProductoServiceImp implements ProductoService {
 	}
 
 	@Override
-	public List<Producto> buscarPorNombreConFragmento(String fragmento) {
-		return productoRepository.findByNombreContaining(fragmento);
+	public List<Producto> buscarPorCadena(String cadena) {
+		return productoRepository.findByNombreContaining(cadena);
 	}
-
 	@Override
-	public List<Producto> buscarPorPrecioAcotado(Double min, Double max) {
+	public List<Producto> buscarEntrePrecios(Double min,Double max){
 		return productoRepository.findByPrecioBetween(min, max);
 	}
-
+	
 	@Override
-	public List<Producto> buscarProductosMenorQueOrdenadoAsc(Double precio) {
-		return productoRepository.findByPrecioLessThanOrderByPrecioAsc(precio);
+	public List<Producto> buscarEntrePreciosOrdenNombre(Double min,Double max){
+		
+		List<Producto> prods= productoRepository.findByPrecioBetween(min, max);
+
+		return prods.stream().sorted(Comparator.comparing(Producto::getNombre)).toList();
+	}
+
+	
+	@Override
+	public List<Producto> buscarEntrePreciosOrdenPrecio(Double min,Double max){
+		
+		List<Producto> prods= productoRepository.findByPrecioBetween(min, max);
+
+		return prods.stream().sorted(Comparator.comparing(Producto::getPrecio)).toList();
 	}
 
 	@Override
-	public List<Producto> listarProductosOrdenadosPorPrecioAsc(Sort sort) {
-		// Sort sort = Sort.by("precio").ascending();
-		return productoRepository.findAll(sort);
-		// return productoRepository.findAll(Sort.by("precio").ascending());
-	}
-
-	@Override
-	public List<Producto> buscarPorNombreCategoria(String nombre) {
+	public List<Producto> buscarPorCategoria(String nombre) {
+		
 		return productoRepository.findByCategoriaNombre(nombre);
 	}
+
 
 }
