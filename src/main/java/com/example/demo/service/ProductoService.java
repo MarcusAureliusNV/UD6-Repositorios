@@ -6,10 +6,18 @@ import com.example.demo.entity.Producto;
 
 public interface ProductoService {
 	
-	Producto crearProducto();
-	Producto consultarPorId(long id);
+	Producto crearProducto(Producto p);
+	Producto buscarPorId(long id);
 	List<Producto> listarProductos();
 	Producto modificarProducto(Producto p);
-	void eliminarProdcuto(int id);
+	void eliminarProducto(Producto p2);
 
+	List<Producto> buscarPorNombre(String nombre);
+	List<Producto> buscarPorCadena(String cadena);
+	
+	List<Producto> buscarEntrePrecios(Double min,Double max);
+	List<Producto> buscarEntrePreciosOrdenNombre(Double min,Double max);
+	List<Producto> buscarEntrePreciosOrdenPrecio(Double min,Double max);
+	
+	List<Producto> buscarPorCategoria(String nombre);
 }
