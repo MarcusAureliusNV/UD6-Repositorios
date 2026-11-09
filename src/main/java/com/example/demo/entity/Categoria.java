@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
 
@@ -22,9 +24,11 @@ public class Categoria {
 	@OneToMany(mappedBy = "categoria")
 	private Set<Producto> productos = new HashSet<>();
 
+
 	public Categoria() {
 		super();
 	}
+
 
 	public Categoria(String nombre, Set<Producto> productos) {
 		super();
@@ -37,6 +41,7 @@ public class Categoria {
 	}
 
 	public void setId(Long id) {
+
 		this.id = id;
 	}
 
@@ -48,19 +53,23 @@ public class Categoria {
 		this.nombre = nombre;
 	}
 
+
 	public Set<Producto> getProductos() {
 		return productos;
 	}
 
 	public void setProductos(Set<Producto> productos) {
+
 		this.productos = productos;
 	}
 
 	@Override
 	public String toString() {
+
 		return "Categoria [id=" + id + ", nombre=" + nombre + ", productos=" + productos + "]";
 	}
 
 	
 	
+
 }
