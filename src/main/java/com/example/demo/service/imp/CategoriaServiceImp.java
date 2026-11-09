@@ -34,4 +34,9 @@ public class CategoriaServiceImp implements CategoriaService{
 	public List<Categoria> CategoriasConProductos() {
 		return categoriaRepository.buscarCategoriasConProductos();
 	}
+
+	@Override
+	public List<Categoria> listarCategorias() {
+		return categoriaRepository.findAll();
+	}
 }

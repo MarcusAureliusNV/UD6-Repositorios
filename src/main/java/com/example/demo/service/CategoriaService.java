@@ -8,6 +8,7 @@ public interface CategoriaService {
 	
 	Categoria crearCategoria(Categoria c);
 	void eliminarCategoria(Categoria c);
+	List<Categoria> listarCategorias();
 	
 	List<Categoria> CategoriasConProductos();
 }
