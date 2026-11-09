@@ -12,7 +12,7 @@ import com.example.demo.entity.Producto;
 import com.example.demo.service.CategoriaService;
 import com.example.demo.service.ProductoService;
 
-@Configuration
+//@Configuration
 public class PruebaProducto {
 
 	private ProductoService productoService;

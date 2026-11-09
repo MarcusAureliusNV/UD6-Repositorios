@@ -66,6 +66,14 @@ public class Producto {
 		this.stock = stock;
 	}
 
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
 	@Override
 	public String toString() {
 		return "Produco [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", stock=" + stock + "]";
